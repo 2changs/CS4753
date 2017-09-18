@@ -3114,7 +3114,7 @@
 		}
 
 /* Wrapper */
-/*
+
 	#wrapper > header {
 		padding: 11em 0 2.25em 0 ;
 	}
@@ -3152,7 +3152,7 @@
 		}
 
 	}
-*/
+
 	@media screen and (max-width: 980px) {
 
 		#wrapper > header {
