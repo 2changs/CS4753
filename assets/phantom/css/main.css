@@ -1640,7 +1640,7 @@
 /* Type */
 
 	body, input, select, textarea {
-		color: #585858;
+		color: #ffffff;
 		font-family: "Source Sans Pro", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 300;
@@ -3179,6 +3179,7 @@
 
 	#main {
 		padding: 0em 0 6em 0 ;
+        background-color: #2e3141;
 	}
 
 		@media screen and (max-width: 736px) {
@@ -3342,9 +3343,8 @@
 
 	#wrapper > * > .inner {
 		width: 100%;
-		max-width: 68em;
+		max-width: 55em;
 		margin: 0 auto;
-		padding: 0 2.5em;
 	}
 
 		@media screen and (max-width: 736px) {

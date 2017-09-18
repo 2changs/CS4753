@@ -1,5 +1,12 @@
 
 /* Header */
+.logo {
+    width: 100%;
+}
+
+.shopheader {
+    padding-top: 3.8em;
+}
 
 	#header {
 		-moz-transition: background-color 0.2s ease-in-out;
