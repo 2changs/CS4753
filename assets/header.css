@@ -47,6 +47,11 @@
 				border: 0;
                 line-height: 56px;
 			}
+            
+        #header #rightbutton {
+            right: 1.25em;
+            position: absolute;
+        }
 
 		#header nav {
 			font-family: Raleway, Helvetica, sans-serif;
