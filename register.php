@@ -54,13 +54,37 @@
                             <input type="email" name="email" id="email" />
                         </div>
                         <div class="field">
-                            <label for="message">Password</label>
+                            <label for="password">Password</label>
                             <input name="pass" id="pass" type="password"></input>
                         </div>
                         <div class="field">
-                            <label for="message">Confirm Password</label>
+                            <label for="password2">Confirm Password</label>
                             <input name="pass2" id="pass2" type="password"></input>
                         </div>
+                        <div class="field">
+                            <label for="first_name">First Name</label>
+                            <input name="first_name" id="first_name" type="text"></input>
+                        </div>
+                        <div class="field">
+                            <label for="last_name">Last Name</label>
+                            <input name="last_name" id="last_name" type="text"></input>
+                        </div>                        
+                        <div class="field">
+                            <label for="address">Address</label>
+                            <input name="address" id="address" type="text"></input>
+                        </div>
+                        <div class="field">
+                            <label for="city">City</label>
+                            <input name="city" id="city" type="text"></input>
+                        </div>
+                        <div class="field">
+                            <label for="state">State</label>
+                            <input name="state" id="state" type="text"></input>
+                        </div>          
+                        <div class="field">
+                            <label for="zip">Zip Code</label>
+                            <input name="zip" id="zip" type="text"></input>
+                        </div>                                      
                         <ul class="actions">
                             <li><input type="submit" value="Register" action="register"/></li>
                             <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
