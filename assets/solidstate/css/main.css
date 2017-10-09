@@ -3116,7 +3116,7 @@
 /* Wrapper */
 
 	#wrapper > header {
-		padding: 11em 0 0 0 ;
+		padding: 4em 0 0 0 ;
 	}
 
 		#wrapper > header .inner {
@@ -3156,7 +3156,7 @@
 	@media screen and (max-width: 980px) {
 
 		#wrapper > header {
-			padding: 11em 3em 7.375em 3em ;
+			padding: 4em 3em 7.375em 3em ;
 			background-size: auto, cover;
 			background-position: center, 0% 0%;
 			/* margin-bottom: -4.75em; */
