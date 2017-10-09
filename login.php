@@ -26,7 +26,7 @@
 						<h1><a href="shop.html">Shop Now</a></h1>
 						<h1><a href="about.html">About Us</a></h1>
                         <div id="rightbutton">
-                            <h1 style="color: silver"><a href="register.html">Sign Up/Login</a></h1>
+                            <h1 style="color: silver"><a href="register.php">Sign Up/Login</a></h1>
                         </div>
 					</div>
 
@@ -62,7 +62,7 @@
                                     </div>
                                     <ul class="actions">
                                         <li><input type="submit" value="Log In" /></li>
-                                        <li>Don't have an account? <a href="register.html">Sign up</a> to subscribe to our service and to stay updated on fidget spinner news.</li>
+                                        <li>Don't have an account? <a href="register.php">Sign up</a> to subscribe to our service and to stay updated on fidget spinner news.</li>
                                     </ul>
                                 </form>
 							</div>

@@ -1,9 +1,3 @@
-<!DOCTYPE HTML>
-<!--
-	Solid State by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
--->
 <html>
 	<head>
 		<title>FPM</title>
@@ -26,7 +20,7 @@
 						<h1><a href="shop.html">Shop Now</a></h1>
 						<h1><a href="about.html">About Us</a></h1>
                         <div id="rightbutton">
-                            <h1 style="color: silver"><a href="register.html">Sign Up/Login</a></h1>
+                            <h1 style="color: silver"><a href="register.php">Sign Up/Login</a></h1>
                         </div>
 					</div>
 
@@ -54,7 +48,7 @@
                                 <p>
                                     Signing up allows you to subscribe to our fidget spinner service, as well as receive up-to-date information on the latest fidget spinner news and trends.
                                 </p>
-                                <form method="post" action="form_register.php">
+                                <form method="post" action="">
                                     <div class="field">
                                         <label for="name">Username</label>
                                         <input type="text" name="name" id="name" />
@@ -72,8 +66,8 @@
                                         <input name="pass2" id="pass2" type="password"></input>
                                     </div>
                                     <ul class="actions">
-                                        <li><input type="submit" value="Register" /></li>
-                                        <li>Already have an account? <a href="login.html">Log in</a> instead.</li>
+                                        <li><input type="submit" value="Register" action="register"/></li>
+                                        <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
                                     </ul>
                                 </form>
 							</div>
