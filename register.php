@@ -84,7 +84,15 @@
 										        }
 										        else
 										        {
-										            mysqli_query($connection, "insert into customers(email,password) values('".$email."','".md5($password)."')");
+										        	$first_name = mysqli_real_escape_string($connection,$_POST['first_name']);
+										        	$last_name = mysqli_real_escape_string($connection,$_POST['last_name']);
+										        	$address = mysqli_real_escape_string($connection,$_POST['address']);
+										        	$city = mysqli_real_escape_string($connection,$_POST['city']);
+										        	$state = mysqli_real_escape_string($connection,$_POST['state']);
+										        	$zip = mysqli_real_escape_string($connection,$_POST['zip']);
+										        	$phone_number = mysqli_real_escape_string($connection,$_POST['phone_number']);
+
+										            mysqli_query($connection, "insert into customers(email, password, first_name, last_name, address, city, state, zip, phone_number) values('".$email."','".md5($password)."','".$first_name."','".$last_name."','".$address."','".$city."','".$state."','".$zip."','".$phone_number."')");
 										            $message = "Signup Sucessfully!!";
 										        }
 										    }
@@ -127,8 +135,12 @@
                             <label for="zip">Zip Code</label>
                             <input name="zip" id="zip" type="text"></input>
                         </div>
+                        <div class="field">
+                            <label for="phone_number">Phone Number</label>
+                            <input name="phone_number" id="phone_number" type="text"></input>
+                        </div>
                         <ul class="actions">
-											    	<input name="action" type="hidden" value="register" /></p>
+							<input name="action" type="hidden" value="register" /></p>
                             <li><input type="submit" value="Register" action="Register"/></li>
                             <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
                         </ul>
