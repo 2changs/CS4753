@@ -48,6 +48,48 @@
                     <p>
                         Signing up allows you to subscribe to our fidget spinner service, as well as receive up-to-date information on the latest fidget spinner news and trends.
                     </p>
+										<?php
+										include('db.php');
+										if(isset($_POST['action']))
+										{
+										    if($_POST['action']=="login")
+										    {
+										        $email = mysqli_real_escape_string($connection,$_POST['email']);
+										        $password = mysqli_real_escape_string($connection,$_POST['password']);
+										        $strSQL = mysqli_query($connection,"select name from users where email='".$email."' and password='".md5($password)."'");
+										        $Results = mysqli_fetch_array($strSQL);
+										        if(count($Results)>=1)
+										        {
+										            $message = $Results['name']." Login Sucessfully!!";
+										        }
+										        else
+										        {
+										            $message = "Invalid email or password!!";
+										        }
+										    }
+										    elseif($_POST['action']=="register")
+										    {
+										        $email      = mysqli_real_escape_string($connection,$_POST['email']);
+										        $password   = mysqli_real_escape_string($connection,$_POST['pass']);
+										        $query = "SELECT email FROM customers where email='".$email."'";
+										        $result = mysqli_query($connection,$query);
+										        $numResults = mysqli_num_rows($result);
+										        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
+										        {
+										            $message =  "Invalid email, address please type a valid email!!";
+										        }
+										        elseif($numResults>=1)
+										        {
+										            $message = $email."Email already registered.";
+										        }
+										        else
+										        {
+										            mysqli_query($connection, "insert into customers(email,password) values('".$email."','".md5($password)."')");
+										            $message = "Signup Sucessfully!!";
+										        }
+										    }
+										}
+										?>
                     <form method="post" action="">
                         <div class="field">
                             <label for="email">Email</label>
@@ -68,7 +110,7 @@
                         <div class="field">
                             <label for="last_name">Last Name</label>
                             <input name="last_name" id="last_name" type="text"></input>
-                        </div>                        
+                        </div>
                         <div class="field">
                             <label for="address">Address</label>
                             <input name="address" id="address" type="text"></input>
@@ -80,13 +122,14 @@
                         <div class="field">
                             <label for="state">State</label>
                             <input name="state" id="state" type="text"></input>
-                        </div>          
+                        </div>
                         <div class="field">
                             <label for="zip">Zip Code</label>
                             <input name="zip" id="zip" type="text"></input>
-                        </div>                                      
+                        </div>
                         <ul class="actions">
-                            <li><input type="submit" value="Register" action="register"/></li>
+											    	<input name="action" type="hidden" value="register" /></p>
+                            <li><input type="submit" value="Register" action="Register"/></li>
                             <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
                         </ul>
                     </form>
@@ -102,48 +145,6 @@
 			<!--[if lte IE 8]><script src="assets/solidstate/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/solidstate/js/main.js"></script>
 
-			<?php
-			include('db.php');
-			if(isset($_POST['action']))
-			{
-			    if($_POST['action']=="login")
-			    {
-			        $email = mysqli_real_escape_string($connection,$_POST['email']);
-			        $password = mysqli_real_escape_string($connection,$_POST['password']);
-			        $strSQL = mysqli_query($connection,"select name from users where email='".$email."' and password='".md5($password)."'");
-			        $Results = mysqli_fetch_array($strSQL);
-			        if(count($Results)>=1)
-			        {
-			            $message = $Results['name']." Login Sucessfully!!";
-			        }
-			        else
-			        {
-			            $message = "Invalid email or password!!";
-			        }
-			    }
-			    elseif($_POST['action']=="register")
-			    {
-			        $email      = mysqli_real_escape_string($connection,$_POST['email']);
-			        $password   = mysqli_real_escape_string($connection,$_POST['password']);
-			        $query = "SELECT email FROM customers where email='".$email."'";
-			        $result = mysqli_query($connection,$query);
-			        $numResults = mysqli_num_rows($result);
-			        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
-			        {
-			            $message =  "Invalid email, address please type a valid email!!";
-			        }
-			        elseif($numResults>=1)
-			        {
-			            $message = $email."Email already registered.";
-			        }
-			        else
-			        {
-			            mysql_query("insert into customers(email,password) values('".$email."','".md5($password)."')");
-			            $message = "Signup Sucessfully!!";
-			        }
-			    }
-			}
-			?>
 
 
 	</body>
