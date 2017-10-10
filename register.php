@@ -29,8 +29,17 @@
                 if (isNumeric(last_name)) {
                     alert("numbers in last name");
                 }
+                if (isNumeric(city)) {
+                    alert("ASJIFOPAJWEIOFAJWEIOAPEJFAIOWPEFJMAIWEOPFJWAIEOPFJI");
+                }
+                if (isNumeric(state)) {
+                    alert("i hate this class fml");
+                }
                 if (isAlpha(zip)) {
                     alert("asdfasdf");
+                }
+                if (isAlpha(phone_number)) {
+                    alert("asdfajaiwopefjipaowejifpoajweipfojwaepif");
                 }
             }
             
