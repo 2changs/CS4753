@@ -13,34 +13,43 @@
 	<body>
         <script>
             function validateInputs() {
-                var email = document.getElementById("email").value;
-                var pass = document.getElementById("pass").value;
-                var first_name = document.getElementById("first_name").value;
-                var last_name = document.getElementById("last_name").value;
-                var address = document.getElementById("address").value;
-                var city = document.getElementById("city").value;
-                var state = document.getElementById("state").value;
-                var zip = document.getElementById("zip").value;
-                var phone_number = document.getElementById("phone_number").value;
+                var email = document.getElementById("email");
+                var pass = document.getElementById("pass");
+                var first_name = document.getElementById("first_name");
+                var last_name = document.getElementById("last_name");
+                var address = document.getElementById("address");
+                var city = document.getElementById("city");
+                var state = document.getElementById("state");
+                var zip = document.getElementById("zip");
+                var phone_number = document.getElementById("phone_number");
 
-                if (isNumeric(first_name)) {
-                    alert("numbers in first name");
+                var thingToChangeRed;
+                if (isNumeric(first_name.value)) {
+                    alert("First name contains numbers.");
+                    thingToChangeRed = first_name;
                 }
-                if (isNumeric(last_name)) {
-                    alert("numbers in last name");
+                if (isNumeric(last_name.value)) {
+                    alert("Last name contains numbers.");
+                    thingToChangeRed = last_name;
                 }
-                if (isNumeric(city)) {
-                    alert("ASJIFOPAJWEIOFAJWEIOAPEJFAIOWPEFJMAIWEOPFJWAIEOPFJI");
+                if (isNumeric(city.value)) {
+                    alert("City contains numbers.");
+                    thingToChangeRed = city;
                 }
-                if (isNumeric(state)) {
-                    alert("i hate this class fml");
+                if (isNumeric(state.value)) {
+                    alert("State contains numbers.");
+                    thingToChangeRed = state;
                 }
-                if (isAlpha(zip)) {
-                    alert("asdfasdf");
+                if (isAlpha(zip.value)) {
+                    alert("Zip contains letters.");
+                    thingToChangeRed = zip;
                 }
-                if (isAlpha(phone_number)) {
-                    alert("asdfajaiwopefjipaowejifpoajweipfojwaepif");
+                if (isAlpha(phone_number.value)) {
+                    alert("Phone number contains letters.");
+                    thingToChangeRed = phone_number;
                 }
+
+                thingToChangeRed.style = "border-color: red";
             }
             
             function isNumeric(str) {
