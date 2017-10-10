@@ -108,10 +108,6 @@
                             <input name="pass" id="pass" type="password"></input>
                         </div>
                         <div class="field">
-                            <label for="password2">Confirm Password</label>
-                            <input name="pass2" id="pass2" type="password"></input>
-                        </div>
-                        <div class="field">
                             <label for="first_name">First Name</label>
                             <input name="first_name" id="first_name" type="text"></input>
                         </div>
