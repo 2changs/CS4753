@@ -11,6 +11,37 @@
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/solidstate/css/ie8.css" /><![endif]-->
 	</head>
 	<body>
+        <script>
+            function validateInputs() {
+                var email = document.getElementById("email").value;
+                var pass = document.getElementById("pass").value;
+                var first_name = document.getElementById("first_name").value;
+                var last_name = document.getElementById("last_name").value;
+                var address = document.getElementById("address").value;
+                var city = document.getElementById("city").value;
+                var state = document.getElementById("state").value;
+                var zip = document.getElementById("zip").value;
+                var phone_number = document.getElementById("phone_number").value;
+
+                if (isNumeric(first_name)) {
+                    alert("numbers in first name");
+                }
+                if (isNumeric(last_name)) {
+                    alert("numbers in last name");
+                }
+                if (isAlpha(zip)) {
+                    alert("asdfasdf");
+                }
+            }
+            
+            function isNumeric(str) {
+                return /\d/.test(str);
+            }
+
+            function isAlpha(str) {
+                return str.match(/[a-z]/i);
+            }
+        </script>
 
 		<!-- Page Wrapper -->
 			<div id="page-wrapper">
@@ -88,7 +119,7 @@
                         </div>
                         <ul class="actions">
 							<input name="action" type="hidden" value="register" /></p>
-                            <li><input type="submit" value="Register" action="Register"/></li>
+                            <li><input type="submit" value="Register" action="Register" onclick="validateInputs()"/></li>
                             <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
                         </ul>
                     </form>
