@@ -12,6 +12,7 @@
 		<!--[if lte IE 8]><script src="assets/solidstate/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/solidstate/css/main.css" />
 		<link rel="stylesheet" href="assets/header.css" />
+		<link rel="stylesheet" href="assets/style.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/solidstate/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/solidstate/css/ie8.css" /><![endif]-->
 	</head>
@@ -49,7 +50,7 @@
 					<section id="wrapper">
 						<header>
                             <div class="inner">
-							<div><image class="logo" src="img/logo.png"></div>
+							<div class="logo_container"><image class="logo" src="img/logo.png"></div>
 								<h2>Log In</h2>
                                 <form method="post" action="#">
                                     <div class="field">
