@@ -6,6 +6,7 @@
 		<!--[if lte IE 8]><script src="assets/solidstate/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/solidstate/css/main.css" />
 		<link rel="stylesheet" href="assets/header.css" />
+		<link rel="stylesheet" href="assets/style.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/solidstate/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/solidstate/css/ie8.css" /><![endif]-->
 	</head>
@@ -48,57 +49,7 @@
                     <p>
                         Signing up allows you to subscribe to our fidget spinner service, as well as receive up-to-date information on the latest fidget spinner news and trends.
                     </p>
-										<?php
-										include('db.php');
-										if(isset($_POST['action']))
-										{
-										    if($_POST['action']=="login")
-										    {
-										        $email = mysqli_real_escape_string($connection,$_POST['email']);
-										        $password = mysqli_real_escape_string($connection,$_POST['password']);
-										        $strSQL = mysqli_query($connection,"select name from users where email='".$email."' and password='".md5($password)."'");
-										        $Results = mysqli_fetch_array($strSQL);
-										        if(count($Results)>=1)
-										        {
-										            $message = $Results['name']." Login Sucessfully!!";
-										        }
-										        else
-										        {
-										            $message = "Invalid email or password!!";
-										        }
-										    }
-										    elseif($_POST['action']=="register")
-										    {
-										        $email      = mysqli_real_escape_string($connection,$_POST['email']);
-										        $password   = mysqli_real_escape_string($connection,$_POST['pass']);
-										        $query = "SELECT email FROM customers where email='".$email."'";
-										        $result = mysqli_query($connection,$query);
-										        $numResults = mysqli_num_rows($result);
-										        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
-										        {
-										            $message =  "Invalid email, address please type a valid email!!";
-										        }
-										        elseif($numResults>=1)
-										        {
-										            $message = $email."Email already registered.";
-										        }
-										        else
-										        {
-										        	$first_name = mysqli_real_escape_string($connection,$_POST['first_name']);
-										        	$last_name = mysqli_real_escape_string($connection,$_POST['last_name']);
-										        	$address = mysqli_real_escape_string($connection,$_POST['address']);
-										        	$city = mysqli_real_escape_string($connection,$_POST['city']);
-										        	$state = mysqli_real_escape_string($connection,$_POST['state']);
-										        	$zip = mysqli_real_escape_string($connection,$_POST['zip']);
-										        	$phone_number = mysqli_real_escape_string($connection,$_POST['phone_number']);
-
-										            mysqli_query($connection, "insert into customers(email, password, first_name, last_name, address, city, state, zip, phone_number) values('".$email."','".md5($password)."','".$first_name."','".$last_name."','".$address."','".$city."','".$state."','".$zip."','".$phone_number."')");
-										            $message = "Signup Sucessfully!!";
-										        }
-										    }
-										}
-										?>
-                    <form method="post" action="">
+                                        <form method="post" action="">
                         <div class="field">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" required />
@@ -141,8 +92,61 @@
                             <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
                         </ul>
                     </form>
-							</div>
-						</header>
+										<?php
+										include('db.php');
+										if(isset($_POST['action']))
+										{
+										    if($_POST['action']=="login")
+										    {
+										        $email = mysqli_real_escape_string($connection,$_POST['email']);
+										        $password = mysqli_real_escape_string($connection,$_POST['password']);
+										        $strSQL = mysqli_query($connection,"select name from users where email='".$email."' and password='".md5($password)."'");
+										        $Results = mysqli_fetch_array($strSQL);
+										        if(count($Results)>=1)
+										        {
+										            $message = $Results['name']." Login Sucessfully!!";
+										        }
+										        else
+										        {
+										            $message = "Invalid email or password!!";
+										        }
+										    }
+										    elseif($_POST['action']=="register")
+										    {
+										        $email      = mysqli_real_escape_string($connection,$_POST['email']);
+										        $password   = mysqli_real_escape_string($connection,$_POST['pass']);
+										        $query = "SELECT email FROM customers where email='".$email."'";
+										        $result = mysqli_query($connection,$query);
+										        $numResults = mysqli_num_rows($result);
+										        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
+										        {
+										            $message =  "Invalid email, address please type a valid email!!";
+										            echo("<p class='submission_message_error'>".$message."</p>");
+										        }
+										        elseif($numResults>=1)
+										        {
+										            $message = "Email is already registered.";
+										            echo("<p class='submission_message_error'>".$message."</p>");
+										        }
+										        else
+										        {
+										        	$first_name = mysqli_real_escape_string($connection,$_POST['first_name']);
+										        	$last_name = mysqli_real_escape_string($connection,$_POST['last_name']);
+										        	$address = mysqli_real_escape_string($connection,$_POST['address']);
+										        	$city = mysqli_real_escape_string($connection,$_POST['city']);
+										        	$state = mysqli_real_escape_string($connection,$_POST['state']);
+										        	$zip = mysqli_real_escape_string($connection,$_POST['zip']);
+										        	$phone_number = mysqli_real_escape_string($connection,$_POST['phone_number']);
+
+										            mysqli_query($connection, "insert into customers(email, password, first_name, last_name, address, city, state, zip, phone_number) values('".$email."','".md5($password)."','".$first_name."','".$last_name."','".$address."','".$city."','".$state."','".$zip."','".$phone_number."')");
+										            $message = "Signed up sucessfully!!";
+										            echo("<p class='submission_message_success'>".$message."</p>");
+										        }
+										    }
+										}
+										?>
+					</div>
+				</header>
 			</div>
 
 		<!-- Scripts -->
