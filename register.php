@@ -101,39 +101,39 @@
                     <form method="post" action="">
                         <div class="field">
                             <label for="email">Email</label>
-                            <input type="email" name="email" id="email" />
+                            <input type="email" name="email" id="email" required />
                         </div>
                         <div class="field">
                             <label for="password">Password</label>
-                            <input name="pass" id="pass" type="password"></input>
+                            <input name="pass" id="pass" type="password" required ></input>
                         </div>
                         <div class="field">
                             <label for="password2">Confirm Password</label>
-                            <input name="pass2" id="pass2" type="password"></input>
+                            <input name="pass2" id="pass2" type="password" required ></input>
                         </div>
                         <div class="field">
                             <label for="first_name">First Name</label>
-                            <input name="first_name" id="first_name" type="text"></input>
+                            <input name="first_name" id="first_name" type="text" required ></input>
                         </div>
                         <div class="field">
                             <label for="last_name">Last Name</label>
-                            <input name="last_name" id="last_name" type="text"></input>
+                            <input name="last_name" id="last_name" type="text" required ></input>
                         </div>
                         <div class="field">
                             <label for="address">Address</label>
-                            <input name="address" id="address" type="text"></input>
+                            <input name="address" id="address" type="text" required ></input>
                         </div>
                         <div class="field">
                             <label for="city">City</label>
-                            <input name="city" id="city" type="text"></input>
+                            <input name="city" id="city" type="text" required ></input>
                         </div>
                         <div class="field">
                             <label for="state">State</label>
-                            <input name="state" id="state" type="text"></input>
+                            <input name="state" id="state" type="text" required ></input>
                         </div>
                         <div class="field">
                             <label for="zip">Zip Code</label>
-                            <input name="zip" id="zip" type="text"></input>
+                            <input name="zip" id="zip" type="text" required ></input>
                         </div>
                         <div class="field">
                             <label for="phone_number">Phone Number</label>
