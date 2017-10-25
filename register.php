@@ -12,6 +12,7 @@
 	</head>
 	<body>
         <script>
+        	var thingToChangeRed;
             function validateInputs() {
                 var email = document.getElementById("email");
                 var pass = document.getElementById("pass");
@@ -22,42 +23,69 @@
                 var state = document.getElementById("state");
                 var zip = document.getElementById("zip");
                 var phone_number = document.getElementById("phone_number");
+                var error_message = document.getElementById("error_message");
+                var form = document.getElementById("register_form");
+                var phpError = document.getElementById("php_error");
 
-                var thingToChangeRed;
-                if (isNumeric(first_name.value)) {
-                    alert("First name contains numbers.");
+                error_message.innerHTML = "";
+                if(phpError) {
+                	phpError.innerHTML = "";
+                }
+
+                if (thingToChangeRed) {
+                	thingToChangeRed.style = "";
+                	thingToChangeRed = null;
+                }
+                if (!isAllAlpha(first_name.value) && !thingToChangeRed) {
+                    error_message.innerHTML = "First name must contain only letters.";
                     thingToChangeRed = first_name;
                 }
-                if (isNumeric(last_name.value)) {
-                    alert("Last name contains numbers.");
+                if (!isAllAlpha(last_name.value) && !thingToChangeRed) {
+                    error_message.innerHTML = "Last name must contain only letters.";
                     thingToChangeRed = last_name;
                 }
-                if (isNumeric(city.value)) {
-                    alert("City contains numbers.");
+                if (!isValidAddress(address.value) && !thingToChangeRed) {
+                	error_message.innerHTML = "Address must only contain letters, numbers, '#', or '.'";
+                	thingToChangeRed = address;
+                }
+                if (!isAllAlpha(city.value) && !thingToChangeRed) {
+                    error_message.innerHTML = "City must contain only letters.";
                     thingToChangeRed = city;
                 }
-                if (isNumeric(state.value)) {
-                    alert("State contains numbers.");
-                    thingToChangeRed = state;
-                }
-                if (isAlpha(zip.value)) {
-                    alert("Zip contains letters.");
+                if (!isAllNumeric(zip.value) && !thingToChangeRed) {
+                    error_message.innerHTML = "Zip code must contain only numbers.";
                     thingToChangeRed = zip;
                 }
-                if (isAlpha(phone_number.value)) {
-                    alert("Phone number contains letters.");
+                if (zip.value.length != 5 && !thingToChangeRed) {
+                	error_message.innerHTML = "Zip code must contain only 5 numbers.";
+                	thingToChangeRed = zip;
+                }
+                if (!isAllNumeric(phone_number.value) && !thingToChangeRed) {
+                    error_message.innerHTML = "Phone number must contain only numbers.";
                     thingToChangeRed = phone_number;
                 }
+                if (phone_number.value.length != 10 && !thingToChangeRed) {
+                	error_message.innerHTML = "Phone number must contain only 10 numbers.";
+                	thingToChangeRed = phone_number;
+                }
 
-                thingToChangeRed.style = "border-color: red";
+            	if(thingToChangeRed) {
+            		thingToChangeRed.style = "border-color: red";
+            		return false;
+            	}
+            	form.submit();
+            }
+
+            function isValidAddress(str) {
+            	return /^[a-zA-Z0-9#. ]*$/.test(str);
             }
             
-            function isNumeric(str) {
-                return /\d/.test(str);
+            function isAllAlpha(str) {
+                return /^[a-zA-Z]+$/.test(str);
             }
 
-            function isAlpha(str) {
-                return str.match(/[a-z]/i);
+            function isAllNumeric(str) {
+                return /^\d+$/.test(str);
             }
         </script>
 
@@ -98,7 +126,7 @@
                     <p>
                         Signing up allows you to subscribe to our fidget spinner service, as well as receive up-to-date information on the latest fidget spinner news and trends.
                     </p>
-                                        <form method="post" action="">
+                    <form id="register_form" method="post" action="" onsubmit="event.preventDefault(); validateInputs();">
                         <div class="field">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" required />
@@ -189,10 +217,11 @@
                         </div>
                         <ul class="actions">
 							<input name="action" type="hidden" value="register" /></p>
-                            <li><input type="submit" value="Register" action="Register" onclick="validateInputs()"/></li>
+                            <li><input type="submit" value="Register" action="Register"/></li>
                             <li>Already have an account? <a href="login.php">Log in</a> instead.</li>
                         </ul>
                     </form>
+                    <p id="error_message" class="submission_message_error"> </p>
 										<?php
 										include('db.php');
 										if(isset($_POST['action']))
@@ -222,12 +251,12 @@
 										        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
 										        {
 										            $message =  "Invalid email, address please type a valid email!!";
-										            echo("<p class='submission_message_error'>".$message."</p>");
+										            echo("<p id='php_error' class='submission_message_error'>".$message."</p>");
 										        }
 										        elseif($numResults>=1)
 										        {
 										            $message = "Email is already registered.";
-										            echo("<p class='submission_message_error'>".$message."</p>");
+										            echo("<p id='php_error' class='submission_message_error'>".$message."</p>");
 										        }
 										        else
 										        {
