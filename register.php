@@ -224,6 +224,10 @@
                     </form>
                     <p id="error_message" class="submission_message_error"> </p>
 										<?php
+										use PHPMailer\PHPMailer\PHPMailer;
+										use PHPMailer\PHPMailer\Exception;
+
+										require 'vendor/autoload.php';
 										include('db.php');
 										if(isset($_POST['action']))
 										{
@@ -272,6 +276,34 @@
 										            mysqli_query($connection, "insert into customers(email, password, first_name, last_name, address, city, state, zip, phone_number) values('".$email."','".md5($password)."','".$first_name."','".$last_name."','".$address."','".$city."','".$state."','".$zip."','".$phone_number."')");
 										            $message = "Signed up sucessfully!!";
 										            echo("<p class='submission_message_success'>".$message."</p>");
+
+										            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+													try {
+													//Server settings
+													$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+													$mail->isSMTP();                                      // Set mailer to use SMTP
+													$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+													$mail->SMTPAuth = true;                               // Enable SMTP authentication
+													$mail->Username = 'fidgetspinnerprofessionals@gmail.com';                 // SMTP username
+													$mail->Password = 'fidget spinner';                           // SMTP password
+													$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+													$mail->Port = 587;                                    // TCP port to connect to
+													$mail->SMTPDebug = 0;
+													//Recipients
+													$mail->setFrom('fidgetspinnerprofessionals@gmail.com', 'Mailer');
+													$mail->addAddress($email, $first_name);     // Add a recipient
+
+													//Content
+													$mail->isHTML(true);                                  // Set email format to HTML
+													$mail->Subject = 'Thanks for signing up!';
+													$mail->Body    = 'Hey there '.$first_name.", welcome to Fidget Per Month! We hope to make your fidget spinning experience enjoyable. If you haven't done so already, sign up for a plan today! ";
+													$mail->AltBody = 'Hey there '.$first_name.", welcome to Fidget Per Month! We hope to make your fidget spinning experience enjoyable. If you haven't done so already, sign up for a plan today! ";
+
+													$mail->send();
+
+													} catch (Exception $e) {
+														echo 'Mailer Error: ' . $mail->ErrorInfo;
+													}
 										        }
 										    }
 										}
