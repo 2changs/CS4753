@@ -121,6 +121,10 @@
                     </form>
                     <p id="error_message" class="submission_message_error"> </p>
 										<?php
+										use PHPMailer\PHPMailer\PHPMailer;
+										use PHPMailer\PHPMailer\Exception;
+
+										require 'vendor/autoload.php';
 										include('db.php');
 										if(isset($_POST['action']) && $_POST['action'] == "contact")
 										{
@@ -131,24 +135,44 @@
 
 									        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
 									        {
-									            $message =  "Invalid email, address please type a valid email!!";
+									            $message =  "Invalid email, please type a valid email!!";
 									            echo("<p id='php_error' class='submission_message_error'>".$message."</p>");
 									        }
 									        else
 									        {
-									        	$first_name = mysqli_real_escape_string($connection,$_POST['first_name']);
-									        	$last_name = mysqli_real_escape_string($connection,$_POST['last_name']);
-									        	$address = mysqli_real_escape_string($connection,$_POST['address']);
-									        	$city = mysqli_real_escape_string($connection,$_POST['city']);
-									        	$state = mysqli_real_escape_string($connection,$_POST['state']);
-									        	$zip = mysqli_real_escape_string($connection,$_POST['zip']);
-									        	$phone_number = mysqli_real_escape_string($connection,$_POST['phone_number']);
-
-
 									            mysqli_query($connection, "insert into contact(name, email, subject, message) values('".$name."','".$email."','".$subject."','".$message."')");
 
-									            $message = "Message has been sent! We will try to get back to you as soon as possible!s";
-									            echo("<p class='submission_message_success'>".$message."</p>");
+									            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+												try {
+												//Server settings
+												$mail->SMTPDebug = 2;                                 // Enable verbose debug output
+												$mail->isSMTP();                                      // Set mailer to use SMTP
+												$mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
+												$mail->SMTPAuth = true;                               // Enable SMTP authentication
+												$mail->Username = 'fidgetspinnerprofessionals@gmail.com';                 // SMTP username
+												$mail->Password = 'fidget spinner';                           // SMTP password
+												$mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+												$mail->Port = 587;                                    // TCP port to connect to
+												$mail->SMTPDebug = 0;
+												//Recipients
+												$mail->setFrom($email, $name);
+												$mail->addAddress('fidgetspinnerprofessionals@gmail.com', 'Fidget Spinner Professionals');     // Add a recipient
+
+												//Content
+												$mail->isHTML(true);                                  // Set email format to HTML
+												$mail->Subject = $subject;
+												$mail->Body    = $message;
+												$mail->AltBody = $message;
+
+												$mail->send();
+
+												} catch (Exception $e) {
+													echo 'Mailer Error: ' . $mail->ErrorInfo;
+												}
+
+
+									            $success = "Message has been sent! We will try to get back to you as soon as possible!s";
+									            echo("<p class='submission_message_success'>".$success."</p>");
 									        }
 										    
 										}
