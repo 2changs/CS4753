@@ -136,15 +136,6 @@
 									        }
 									        else
 									        {
-									        	$first_name = mysqli_real_escape_string($connection,$_POST['first_name']);
-									        	$last_name = mysqli_real_escape_string($connection,$_POST['last_name']);
-									        	$address = mysqli_real_escape_string($connection,$_POST['address']);
-									        	$city = mysqli_real_escape_string($connection,$_POST['city']);
-									        	$state = mysqli_real_escape_string($connection,$_POST['state']);
-									        	$zip = mysqli_real_escape_string($connection,$_POST['zip']);
-									        	$phone_number = mysqli_real_escape_string($connection,$_POST['phone_number']);
-
-
 									            mysqli_query($connection, "insert into contact(name, email, subject, message) values('".$name."','".$email."','".$subject."','".$message."')");
 
 									            $message = "Message has been sent! We will try to get back to you as soon as possible!s";
