@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <html>
 	<head>
 		<title>FPM</title>
@@ -63,13 +66,26 @@
 
 				<!-- Header -->
 					<div id="header" class="">
-						<h1><a href="index.html">Home</a></h1>
-						<h1><a href="shop.html">Shop Now</a></h1>
-						<h1><a href="about.html">About Us</a></h1>
-						<h1><a href="contact.php">Contact Us</a></h1>
-            <div id="rightbutton">
-                <h1 style="color: silver"><a href="register.php">Sign Up/Login</a></h1>
-            </div>
+							<h1><a href="index.php">Home</a></h1>
+							<h1><a href="shop.php">Shop Now</a></h1>
+							<h1><a href="about.php">About Us</a></h1>
+							<h1 style="color: silver"><a href="contact.php">Contact Us</a></h1>
+								<?php
+								if ($_SESSION['loggedin'] == true) {
+								?>
+								<h1><a href="loggedin.php">My Account</a></h1>
+								<div id="rightbutton">
+										<h1><a href="logout.php">Log Out</a></h1>
+								</div>
+								<?php
+								} else {
+								?>
+								<div id="rightbutton">
+										<h1><a href="register.php">Sign Up/Login</a></h1>
+								</div>
+								<?php
+								}
+								?>
 					</div>
 
 				<!-- Menu -->
@@ -131,7 +147,7 @@
 										    $name = mysqli_real_escape_string($connection,$_POST['name']);
 									        $email = mysqli_real_escape_string($connection,$_POST['email']);
 									        $subject = mysqli_real_escape_string($connection,$_POST['subject']);
-									        $message = mysqli_real_escape_string($connection,$_POST['message']);	
+									        $message = mysqli_real_escape_string($connection,$_POST['message']);
 
 									        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
 									        {
@@ -174,7 +190,7 @@
 									            $success = "Message has been sent! We will try to get back to you as soon as possible!s";
 									            echo("<p class='submission_message_success'>".$success."</p>");
 									        }
-										    
+
 										}
 										?>
 					</div>

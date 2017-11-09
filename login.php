@@ -54,18 +54,46 @@
 								<h2>Log In</h2>
                                 <form method="post" action="#">
                                     <div class="field">
-                                        <label for="name">Username</label>
-                                        <input type="text" name="name" id="name" />
+                                        <label for="name">Email</label>
+                                        <input type="email" name="email" id="email" />
                                     </div>
                                     <div class="field">
                                         <label for="message">Password</label>
-                                        <input name="pass" id="pass" type="password"></input>
+                                        <input name="password" id="password" type="password"></input>
                                     </div>
+																		<input name="action" type="hidden" value="login" /></p>
                                     <ul class="actions">
                                         <li><input type="submit" value="Log In" /></li>
                                         <li>Don't have an account? <a href="register.php">Sign up</a> to subscribe to our service and to stay updated on fidget spinner news.</li>
                                     </ul>
                                 </form>
+																<?php
+																session_start(); // Starting Session
+																require 'vendor/autoload.php';
+																include('db.php');
+																if(isset($_POST['action']))
+																{
+																    if($_POST['action']=="login")
+																    {
+																        $email = mysqli_real_escape_string($connection,$_POST['email']);
+																        $password = mysqli_real_escape_string($connection,$_POST['password']);
+																        $strSQL = mysqli_query($connection,"select first_name, last_name, email from customers where email='".$email."' and password='".md5($password)."'");
+																        $Results = mysqli_fetch_array($strSQL);
+																        if(count($Results)>=1)
+																        {
+																						$_SESSION['email']=$Results['email'];
+																						$_SESSION['first_name']=$Results['first_name'];
+																						$_SESSION['last_name']=$Results['last_name'];
+																						header("location: loggedin.php"); // Redirecting To Other Page
+																        }
+																        else
+																        {
+																            $message = "Invalid email or password!!";
+																            echo("<p class='login-error-message' stype='color: red;'>".$message."</p>");
+																        }
+																    }
+																}
+																?>
 							</div>
 						</header>
 			</div>
