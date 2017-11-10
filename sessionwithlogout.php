@@ -19,7 +19,7 @@ if (!isset($_SESSION["email"]) || !isset($_SESSION["first_name"]) || !isset($_SE
 if(!$loggedin){
     mysqli_close($connection); // Closing Connection
     session_unset();
-    header('Location: index.html'); // Redirecting To Home Page
+    header('Location: index.php'); // Redirecting To Home Page
 }
 $_SESSION['loggedin'] = $loggedin;
 ?>

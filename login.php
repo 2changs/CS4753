@@ -84,7 +84,8 @@
 																						$_SESSION['email']=$Results['email'];
 																						$_SESSION['first_name']=$Results['first_name'];
 																						$_SESSION['last_name']=$Results['last_name'];
-																						header("location: loggedin.php"); // Redirecting To Other Page
+																						// echo $_SESSION['email']";
+																						echo "<script type='text/javascript'> document.location = 'loggedin.php'; </script>";// Redirecting To Other Page
 																        }
 																        else
 																        {

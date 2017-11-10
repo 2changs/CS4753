@@ -52,6 +52,9 @@ include('session.php');
             <section id="banner">
                 <div class="inner" style="text-align: center;">
                     <div><image class="logo" src="img/logo.png"></div>
+                    <?php
+                    if ($_SESSION['loggedin'] == true) {
+                    ?>
                     <p>You are about to purchase the Standard plan. Click the button below to proceed!</p>
                     <form class="logo" action="https://test.bitpay.com/checkout" method="post" >
                         <input type="hidden" name="action" value="checkout" />
@@ -59,6 +62,13 @@ include('session.php');
                         <input type="hidden" name="data" value="eKH0j0sYXbTiSddl+h3PM5bAcb49nb+HWkkAPGXP5k1GY065wZ2prBo5uL2LwTHf5V67c1hx6ilIFEQ1XPfO2LIv5NLcCxdBncEmEU8eJVeJzMHnIFmcoBaxH5G7+qnkDEEtUpTucp38Wl92ziXuMiO/8Fa7yk+9ttmdEefL+xcTLKHfmznZCuNftvx9gIkQ" />
                         <input type="image" src="https://test.bitpay.com/img/button-large.png" border="0" name="submit" alt="BitPay, the easy way to pay with bitcoins." >
                     </form>
+                    <?php
+                      } else {
+                    ?>
+                    <p>Interested in purchasing the Standard plan? <a href="login.php"> Sign in</a> or <a href="register.php"> create an account</a> today!</p>
+                    <?php
+                    }
+                    ?>
                 </div>
 
             </section>

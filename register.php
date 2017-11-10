@@ -1,3 +1,6 @@
+<?php
+include('session.php');
+?>
 <html>
 	<head>
 		<title>FPM</title>
@@ -79,7 +82,7 @@
             function isValidAddress(str) {
             	return /^[a-zA-Z0-9#. ]*$/.test(str);
             }
-            
+
             function isAllAlpha(str) {
                 return /^[a-zA-Z]+$/.test(str);
             }
@@ -93,15 +96,28 @@
 			<div id="page-wrapper">
 
 				<!-- Header -->
-					<div id="header" class="">
-						<h1><a href="index.html">Home</a></h1>
-						<h1><a href="shop.html">Shop Now</a></h1>
-						<h1><a href="about.html">About Us</a></h1>
+				<div id="header" class="">
+						<h1><a href="index.php">Home</a></h1>
+						<h1><a href="shop.php">Shop Now</a></h1>
+						<h1><a href="about.php">About Us</a></h1>
 						<h1><a href="contact.php">Contact Us</a></h1>
-            <div id="rightbutton">
-                <h1 style="color: silver"><a href="register.php">Sign Up/Login</a></h1>
-            </div>
-					</div>
+							<?php
+							if ($_SESSION['loggedin'] == true) {
+							?>
+							<h1><a href="loggedin.php">My Account</a></h1>
+							<div id="rightbutton">
+									<h1><a href="logout.php">Log Out</a></h1>
+							</div>
+							<?php
+							} else {
+							?>
+							<div id="rightbutton">
+									<h1><a href="register.php">Sign Up/Login</a></h1>
+							</div>
+							<?php
+							}
+							?>
+				</div>
 
 				<!-- Menu -->
 					<nav id="menu">
