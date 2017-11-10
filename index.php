@@ -62,11 +62,14 @@ include('session.php');
 						<!-- One -->
 							<section id="one" class="wrapper spotlight style1">
 								<div class="inner">
-									<a href="#" class="image"><img src="img/blackfidget.png" alt="" /></a>
+									<a href="shop.php" class="image"><img src="img/blackfidget.png" alt="" /></a>
 									<div class="content">
 										<h2 class="major">Black Fidget Spinner</h2>
-										<p>This is a black fidget spinner.</p>
-										<a href="#" class="special">Learn more</a>
+										<p>This is a standard black fidget spinner with the perfect capability of spinning.
+											<br/> You can find a black fidget spinner in a Standard plan!
+											<br /> Click "Learn More" to learn more about these plans.
+										</p>
+										<a href="shop.php" class="special">Learn more</a>
 									</div>
 								</div>
 							</section>
@@ -74,11 +77,14 @@ include('session.php');
 						<!-- Two -->
 							<section id="two" class="wrapper alt spotlight style2">
 								<div class="inner">
-									<a href="#" class="image"><img src="img/redfidget.png" alt="" /></a>
+									<a href="shop.php" class="image"><img src="img/redfidget.png" alt="" /></a>
 									<div class="content">
 										<h2 class="major">Red Fidget Spinner</h2>
-                                        <p>This is a red fidget spinner.</p>
-										<a href="#" class="special">Learn more</a>
+										<p>This is a plus red fidget spinner with the ability to have decal and other decorations.
+											<br/> You can find a red fidget spinner in a Plus plan!
+											<br /> Click "Learn More" to learn more about these plans.
+										</p>
+										<a href="shop.php" class="special">Learn more</a>
 									</div>
 								</div>
 							</section>
@@ -86,11 +92,14 @@ include('session.php');
 						<!-- Three -->
 							<section id="three" class="wrapper spotlight style3">
 								<div class="inner">
-									<a href="#" class="image"><img src="img/greenfidget.png" alt="" /></a>
+									<a href="shop.php" class="image"><img src="img/greenfidget.png" alt="" /></a>
 									<div class="content">
-                                        <h2 class="major">Green Fidget Spinner</h2>
-                                        <p>This is a green fidget spinner.</p>
-										<a href="#" class="special">Learn more</a>
+                      <h2 class="major">Green Fidget Spinner</h2>
+											<p>This is a pro green fidget spinner that you can customize any way you want!
+												<br/> You can find a green fidget spinner in a Pro plan!
+												<br /> Click "Learn More" to learn more about these plans.
+											</p>
+										<a href="shop.php" class="special">Learn more</a>
 									</div>
 								</div>
 							</section>
@@ -102,13 +111,13 @@ include('session.php');
                                     <p>Here are a few reviews by our valued customers.</p>
 									<section class="features">
 										<article>
-											<a href="#" class="image"><img src="img/customer1.jpg" alt="" /></a>
+											<img src="img/customer1.jpg" alt="" style="display:block; margin-left:auto; margin-right:auto; padding-bottom: 10px;"/>
 											<h3 class="major">Dayshawn Marshall</h3>
 											<p>Yo yo yo I love fidget spinners!!!!!!!!!! I lose one every month, so this really replenishes my supply!</p>
 											<!-- <a href="#" class="special">Learn more</a> -->
 										</article>
 										<article>
-											<a href="#" class="image"><img src="img/customer2.jpg" alt="" /></a>
+											<img src="img/customer2.jpg" alt="" style="display:block; margin-left:auto; margin-right:auto; padding-bottom: 10px;"/>
 											<h3 class="major">Surprised Boi</h3>
                                             <p>Fidget spinners are my life, and I battle with them in my free time. This service replaces my damaged spinners!</p>
 											<!-- <a href="#" class="special">Learn more</a> -->
