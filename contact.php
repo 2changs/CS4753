@@ -108,34 +108,10 @@ include('session.php');
 						<header>
                             <div class="inner">
 							<div><image class="logo" src="img/logo.png"></div>
-								<h2>Sign Up</h2>
+								<h2>Contact Us</h2>
                     <p>
                         Have any questions about our business or just want to say hi? Shoot us a message and we'll get back to you as soon as possible!
                     </p>
-                    <form id="contact_form" method="post" action="" onsubmit="event.preventDefault(); validateInputs();">
-                        <div class="field">
-                            <label for="name">Name</label>
-                            <input type="text" name="name" id="name" required />
-                        </div>
-                        <div class="field">
-                            <label for="email">Email</label>
-                            <input type="email" name="email" id="email" required />
-                        </div>
-                        <div class="field">
-                            <label for="subject">Subject</label>
-                            <input type="text" name="subject" id="subject" required />
-                        </div>
-                        <div class="field">
-                            <label for="message">Message</label>
-                            <textarea name="message" id="message" cols="40" rows="5"></textarea>
-                        </div>
-
-                        <ul class="actions">
-							<input name="action" type="hidden" value="contact" /></p>
-                            <li><input type="submit" value="Send" action="Contact"/></li>
-                        </ul>
-                    </form>
-                    <p id="error_message" class="submission_message_error"> </p>
 										<?php
 										use PHPMailer\PHPMailer\PHPMailer;
 										use PHPMailer\PHPMailer\Exception;
@@ -144,21 +120,21 @@ include('session.php');
 										include('db.php');
 										if(isset($_POST['action']) && $_POST['action'] == "contact")
 										{
-										    $name = mysqli_real_escape_string($connection,$_POST['name']);
-									        $email = mysqli_real_escape_string($connection,$_POST['email']);
-									        $subject = mysqli_real_escape_string($connection,$_POST['subject']);
-									        $message = mysqli_real_escape_string($connection,$_POST['message']);
+												$name = mysqli_real_escape_string($connection,$_POST['name']);
+													$email = mysqli_real_escape_string($connection,$_POST['email']);
+													$subject = mysqli_real_escape_string($connection,$_POST['subject']);
+													$message = mysqli_real_escape_string($connection,$_POST['message']);
 
-									        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
-									        {
-									            $message =  "Invalid email, please type a valid email!!";
-									            echo("<p id='php_error' class='submission_message_error'>".$message."</p>");
-									        }
-									        else
-									        {
-									            mysqli_query($connection, "insert into contact(name, email, subject, message) values('".$name."','".$email."','".$subject."','".$message."')");
+													if (!filter_var($email, FILTER_VALIDATE_EMAIL)) // Validate email address
+													{
+															$message =  "Invalid email, please type a valid email!!";
+															echo("<p id='php_error' class='submission_message_error'>".$message."</p>");
+													}
+													else
+													{
+															mysqli_query($connection, "insert into contact(name, email, subject, message) values('".$name."','".$email."','".$subject."','".$message."')");
 
-									            $mail = new PHPMailer(true);                              // Passing `true` enables exceptions
+															$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
 												try {
 												//Server settings
 												$mail->SMTPDebug = 2;                                 // Enable verbose debug output
@@ -187,12 +163,36 @@ include('session.php');
 												}
 
 
-									            $success = "Message has been sent! We will try to get back to you as soon as possible!s";
-									            echo("<p class='submission_message_success'>".$success."</p>");
-									        }
+															$success = "Message has been sent! We will try to get back to you as soon as possible!s";
+															echo("<p class='submission_message_success'>".$success."</p>");
+													}
 
 										}
 										?>
+										<p id="error_message" class="submission_message_error"> </p>
+                    <form id="contact_form" method="post" action="" onsubmit="event.preventDefault(); validateInputs();">
+                        <div class="field">
+                            <label for="name">Name</label>
+                            <input type="text" name="name" id="name" required />
+                        </div>
+                        <div class="field">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" required />
+                        </div>
+                        <div class="field">
+                            <label for="subject">Subject</label>
+                            <input type="text" name="subject" id="subject" required />
+                        </div>
+                        <div class="field">
+                            <label for="message">Message</label>
+                            <textarea name="message" id="message" cols="40" rows="5"></textarea>
+                        </div>
+
+                        <ul class="actions">
+							<input name="action" type="hidden" value="contact" /></p>
+                            <li><input type="submit" value="Send" action="Contact"/></li>
+                        </ul>
+                    </form>
 					</div>
 				</header>
 			</div>

@@ -65,7 +65,8 @@ include('session.php');
 									<a href="buyplan1.php">
 										<h2>Standard</h2>
 										<div class="content">
-											<p>Pick a fidget spinner from a set of standard spinners, and get one every month!</p>
+											<p>Pick a fidget spinner from a set of standard spinners, and get one every month!</p> <br/>
+											<p> $5 </p>
 										</div>
 									</a>
 								</article>
@@ -76,7 +77,8 @@ include('session.php');
 									<a href="buyplan2.php">
 										<h2>Plus</h2>
 										<div class="content">
-											<p>Gain access to a set of specialty fidget spinners, including spinners with LEDs.</p>
+											<p>Gain access to a set of specialty fidget spinners, including spinners with LEDs.</p> <br/>
+											<p> $200 </p>
 										</div>
 									</a>
 								</article>
@@ -87,7 +89,8 @@ include('session.php');
 									<a href="buyplan3.php">
 										<h2>Pro</h2>
 										<div class="content">
-											<p>Customize your own fidget spinner! Add accessories such as Bluetooth music playing, LED lights, and cool shapes</p>
+											<p>Customize your own fidget spinner! Add accessories such as Bluetooth music playing, LED lights, and cool shapes</p> <br/>
+											<p> $1000000 </p>
 										</div>
 									</a>
 								</article>
