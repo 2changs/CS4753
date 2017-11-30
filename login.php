@@ -23,9 +23,10 @@
 
 				<!-- Header -->
 					<div id="header" class="">
-						<h1><a href="index.html">Home</a></h1>
-						<h1><a href="shop.html">Shop Now</a></h1>
-						<h1><a href="about.html">About Us</a></h1>
+						<h1><a href="index.php">Home</a></h1>
+						<h1><a href="shop.php">Shop Now</a></h1>
+						<h1><a href="about.php">About Us</a></h1>
+						<h1><a href="login.php">Contact Us</a></h1>
                         <div id="rightbutton">
                             <h1 style="color: silver"><a href="register.php">Sign Up/Login</a></h1>
                         </div>
