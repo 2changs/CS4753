@@ -66,7 +66,7 @@ include('session.php');
 										<h2>Standard</h2>
 										<div class="content">
 											<p>Pick a fidget spinner from a set of standard spinners, and get one every month!</p> <br/>
-											<p> $5 </p>
+											<p id="standardPrice"> $5 </p>
 										</div>
 									</a>
 								</article>
@@ -78,7 +78,7 @@ include('session.php');
 										<h2>Plus</h2>
 										<div class="content">
 											<p>Gain access to a set of specialty fidget spinners, including spinners with LEDs.</p> <br/>
-											<p> $200 </p>
+											<p id="plusPrice"> $200 </p>
 										</div>
 									</a>
 								</article>
@@ -90,7 +90,7 @@ include('session.php');
 										<h2>Pro</h2>
 										<div class="content">
 											<p>Customize your own fidget spinner! Add accessories such as Bluetooth music playing, LED lights, and cool shapes</p> <br/>
-											<p> $1000000 </p>
+											<p id="proPrice"> $1000000 </p>
 										</div>
 									</a>
 								</article>
@@ -194,6 +194,14 @@ include('session.php');
 								<!--     </a> -->
 								<!-- </article> -->
 							</section>
+							<br><br>
+							<div id="promoSection">
+								<h2>Enter a promo code below:</<h2></h2>
+								<input id="promoCode" type="text"/>
+								<button id="promoButton" onclick="submitPromo()">Apply</button>
+								<br><br>
+								<p id="promoMessage"></p>
+							</div>
 						</div>
 					</div>
 			</div>
@@ -205,5 +213,26 @@ include('session.php');
 			<!--[if lte IE 8]><script src="assets/phantom/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/phantom/js/main.js"></script>
 
+			<script>
+				function submitPromo() {
+					var promoCode = document.getElementById("promoCode").value;
+					var message = document.getElementById("promoMessage");
+					var text = "";
+					if (promoCode == "FIDGET") {
+						document.getElementById("standardPrice").innerHTML = " $2.50 ";
+						document.getElementById("standardPrice").style = "color: #f74747;";
+						document.getElementById("plusPrice").innerHTML = " $100 ";
+						document.getElementById("plusPrice").style = "color: #f74747;";
+						document.getElementById("proPrice").innerHTML = " $500000 ";
+						document.getElementById("proPrice").style = "color: #f74747;";
+						
+						text = "50% discount applied to all plans!";
+					}
+					else {
+						text = "Invalid code."
+					}
+					message.innerHTML = text;
+				}
+			</script>
 	</body>
 </html>

@@ -6,3 +6,14 @@
 	color: green;
 }
 
+#promoCode {
+	width: 80%;
+	height: 50px;
+	float: left;
+}
+
+#promoButton {
+	width: 20%;
+	height: 50px;
+	float: right;
+}

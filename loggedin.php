@@ -62,12 +62,11 @@ include('sessionwithlogout.php');
 									<blockquote>
 										There are two types of people in this world - someone with fidget spinners & someone who gets new fidget spinners every month.
 									</blockquote>
-									<br><br>
+									<br>
 
-
+									<!-- <h2 style="font-size: 1.5em">Your current plan is:</h2> -->
 								</div>
 							</div>
-
 					</section>
 
 			</div>

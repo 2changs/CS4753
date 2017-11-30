@@ -144,7 +144,7 @@ include('session.php');
 							<section id="video" class="wrapper alt style1">
 								<div class="inner">
 									<h2 class="major">Cool tricks with a fidget spinner!</h2>
-									<iframe width="100%" height="600"
+									<iframe width="100%" height="650"
 									src="https://www.youtube.com/embed/cl73DZaIh4Q?autoplay=1" frameborder=0>
 									</iframe>
 								</div>
